@@ -10,6 +10,9 @@ import org.junit.Test;
 
 public class IntegrationTest {
 
+  // delta for comparing doubles
+  private double delta = 0.00001;
+
   // Test to test and demonstrate how the various classes can work together
   @Test
   public void testIntegration() throws ParseException {
@@ -17,7 +20,7 @@ public class IntegrationTest {
     Account account = controller.readFile(FileProcessorTest.class.getResource("valid.txt").getFile());
 
     // Check the balance
-    assertEquals(3000, account.getBalance(), 0);
+    assertEquals(3000, account.getBalance(), delta);
     List<Transaction> transactions = account.getTransactions();
     assertEquals(5, transactions.size());
 

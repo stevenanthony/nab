@@ -1,7 +1,7 @@
 import java.util.Date;
 
 /**
- * Class to store the details of a transaction
+ * Class to store the details of a transaction.
  * 
  * @author Steven
  * 

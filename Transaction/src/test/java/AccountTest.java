@@ -8,17 +8,20 @@ import org.junit.Test;
 
 public class AccountTest {
 
+  // delta for comparing doubles
+  private double delta = 0.00001;
+
   @Test
   public void testBalance() {
     Account account = new Account(5000);
-    assertEquals(5000, account.getBalance(), 0);
+    assertEquals(5000, account.getBalance(), delta);
     assertEquals(0, account.getTransactions().size());
   }
 
   @Test
   public void testNegativeBalance() {
     Account account = new Account(-5000);
-    assertEquals(-5000, account.getBalance(), 0);
+    assertEquals(-5000, account.getBalance(), delta);
     assertEquals(0, account.getTransactions().size());
   }
 
@@ -26,7 +29,7 @@ public class AccountTest {
   public void testPositiveTransaction() {
     Account account = new Account(1000);
     account.processTransaction(new Transaction(TransactionType.IT, 2000, new Date(), "description"));
-    assertEquals(3000, account.getBalance(), 0);
+    assertEquals(3000, account.getBalance(), delta);
     assertEquals(1, account.getTransactions().size());
   }
 
@@ -34,7 +37,7 @@ public class AccountTest {
   public void testNegativeTransaction() {
     Account account = new Account(1000);
     account.processTransaction(new Transaction(TransactionType.IT, -2000, new Date(), "description"));
-    assertEquals(-1000, account.getBalance(), 0);
+    assertEquals(-1000, account.getBalance(), delta);
     assertEquals(1, account.getTransactions().size());
   }
 
@@ -72,7 +75,7 @@ public class AccountTest {
   public void testNullTransaction() {
     Account account = new Account(1000);
     account.processTransaction(null);
-    assertEquals(1000, account.getBalance(), 0);
+    assertEquals(1000, account.getBalance(), delta);
     assertEquals(0, account.getTransactions().size());
   }
 

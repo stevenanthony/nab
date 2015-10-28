@@ -6,14 +6,15 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * Class to process a file and return details of the account and transactions
+ * Class to process a file and return details of the account and transactions.
  * 
  * @author Steven
  * 
  */
 public class FileProcessor {
 
-  DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+  // DateFormat for formatting dates
+  private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
   /**
    * Read the file and return an account based on the starting balance, and

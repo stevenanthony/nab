@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to store the balance and transaction details for an account
+ * Class to store the balance and transaction details for an account.
  * 
  * @author Steven
  * 

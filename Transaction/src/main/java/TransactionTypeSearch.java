@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to filter transactions based on one or more transaction types
+ * Class to filter transactions based on one or more transaction types.
  * 
  * @author Steven
  * 

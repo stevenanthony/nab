@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Class to filter transactions based on a date range
+ * Class to filter transactions based on a date range.
  * 
  * @author Steven
  * 

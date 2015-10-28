@@ -11,11 +11,12 @@ import org.junit.Test;
 
 public class DateRangeSearchTest {
 
+  // DateFormat for formatting dates
+  private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
   @Test
   public void testInsideDateRange() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
-
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     Date from = formatter.parse("27/10/2015");
     Date to = formatter.parse("30/10/2015");
@@ -34,8 +35,6 @@ public class DateRangeSearchTest {
   public void testOutsideDateRange() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
 
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
     Date from = formatter.parse("24/10/2015");
     Date to = formatter.parse("25/10/2015");
     List<Transaction> foundTransactions = new DateRangeSearch().findTransactions(transactions, from, to);
@@ -45,8 +44,6 @@ public class DateRangeSearchTest {
   @Test
   public void testInvalidDateRange() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
-
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     Date from = formatter.parse("25/10/2015");
     Date to = formatter.parse("24/10/2015");
@@ -58,8 +55,6 @@ public class DateRangeSearchTest {
   public void testTransactionOnFromDate() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
 
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
     Date from = formatter.parse("25/10/2015");
     Date to = formatter.parse("26/10/2015");
     List<Transaction> foundTransactions = new DateRangeSearch().findTransactions(transactions, from, to);
@@ -69,8 +64,6 @@ public class DateRangeSearchTest {
   @Test
   public void testTransactionOnToDate() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
-
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     Date from = formatter.parse("31/10/2015");
     Date to = formatter.parse("1/11/2015");
@@ -82,18 +75,16 @@ public class DateRangeSearchTest {
   public void testTimes() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
 
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    DateFormat timeFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-    Date from = formatter.parse("26/10/2015 01:00:00");
-    Date to = formatter.parse("27/10/2015 01:00:00");
+    Date from = timeFormatter.parse("26/10/2015 01:00:00");
+    Date to = timeFormatter.parse("27/10/2015 01:00:00");
     List<Transaction> foundTransactions = new DateRangeSearch().findTransactions(transactions, from, to);
     assertEquals(1, foundTransactions.size());
   }
 
   @Test
   public void testNullTransactions() throws ParseException {
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
     Date from = formatter.parse("31/10/2015");
     Date to = formatter.parse("1/11/2015");
     List<Transaction> foundTransactions = new DateRangeSearch().findTransactions(null, from, to);
@@ -104,8 +95,6 @@ public class DateRangeSearchTest {
   public void testNullTransaction() throws ParseException {
     List<Transaction> transactions = new ArrayList<Transaction>();
     transactions.add(null);
-
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     Date from = formatter.parse("31/10/2015");
     Date to = formatter.parse("1/11/2015");
@@ -118,8 +107,6 @@ public class DateRangeSearchTest {
     List<Transaction> transactions = new ArrayList<Transaction>();
     transactions.add(new Transaction(TransactionType.IT, 500, null, "description"));
 
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
     Date from = formatter.parse("31/10/2015");
     Date to = formatter.parse("1/11/2015");
     List<Transaction> foundTransactions = new DateRangeSearch().findTransactions(transactions, from, to);
@@ -130,8 +117,6 @@ public class DateRangeSearchTest {
   public void testNullFromDate() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
 
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
     Date to = formatter.parse("1/11/2015");
     List<Transaction> foundTransactions = new DateRangeSearch().findTransactions(transactions, null, to);
     assertEquals(0, foundTransactions.size());
@@ -140,8 +125,6 @@ public class DateRangeSearchTest {
   @Test
   public void testNullToDate() throws ParseException {
     List<Transaction> transactions = getStandardTransactions();
-
-    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     Date from = formatter.parse("31/10/2015");
     List<Transaction> foundTransactions = new DateRangeSearch().findTransactions(transactions, from, null);

@@ -3,7 +3,7 @@ Notes:
 This was built in Eclipse using jdk 1.7.0_11.
 
 The src classes are in src/main/java. The Transaction class represents a Transaction, and the TransactionType is an enum which
-stores the possible transaction types. The Account classes stores a list of transactions, and the account balance after the
+stores the possible transaction types. The Account class stores a list of transactions, and the account balance after the
 transactions have been applied. The FileProcessor class reads in an account balance and transactions from a file, and returns 
 an account, to allow retrieving the balance and a list of transactions.
 
